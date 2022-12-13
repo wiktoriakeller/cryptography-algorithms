@@ -59,7 +59,7 @@ n = sieve_of_eratosthenes(max_prime)[-1]
 print(f"Prime number n: {n}")
 
 # primitive root modulo n
-g = find_smallest_primitive_root(4999)
+g = find_smallest_primitive_root(n)
 print(f"Primitive root modulo n: {g}")
 print(f"Check if primitive root modulo n is valid: {check_if_primitive_root(g, n)}")
 

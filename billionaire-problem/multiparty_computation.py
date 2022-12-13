@@ -2,7 +2,7 @@ from Crypto.PublicKey import RSA
 from Crypto.Util import number
 import random
 
-aMillion = 100
+aMillion = 90
 bMillion = 150
 M = 200
 
@@ -10,7 +10,7 @@ M = 200
 bitsNum = 1024
 keyPair = RSA.generate(bits=bitsNum)
 publicKey = keyPair.public_key()
-print("A generated private and public key, send public key to B")
+print("A generated private and public keys, send public key to B")
 
 # generate random x
 x = random.randint(0, 10000)
@@ -29,7 +29,6 @@ while True:
   p = number.getPrime(keyPair.size_in_bits() // 2)
   Y = [pow((m + j - 1), keyPair.d, keyPair.n) for j in range(1, M + 1)]
   Z = [y % p for y in Y]
-  print(Z)
 
   reducedProperly = True
   for i in range(0, len(Z)):

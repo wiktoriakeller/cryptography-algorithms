@@ -43,8 +43,8 @@ def find_smallest_primitive_root(n):
     return None
 
 def encipher(message, p, g, y):
-    # private key
-    k = random.randint(p // 2, p - 2)
+    # private key, ephemeral key
+    k = random.randint(2, p - 2)
     print(f"Private key k: {k}")
 
     # public key
@@ -62,7 +62,7 @@ def encipher(message, p, g, y):
 def to_ascci(m):
     return m.to_bytes(1, byteorder="big").decode(encoding="ascii")
 
-def decipher(encrypted, a, x, p,):
+def decipher(encrypted, a, x, p):
     tmp = pow(a, p - 1 - x, p)
 
     plain = []
@@ -84,7 +84,7 @@ print(f"Primitive root modulo p (generator): {g}")
 
 # private key
 # p - 2 because randint includes both ends of range
-x = random.randint(p // 2, p - 2)
+x = random.randint(2, p - 2)
 print(f"Private key x: {x}")
 
 # public key

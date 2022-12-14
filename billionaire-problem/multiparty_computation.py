@@ -2,7 +2,7 @@ from Crypto.PublicKey import RSA
 from Crypto.Util import number
 import random
 
-aMillion = 2
+aMillion = 5
 bMillion = 3
 M = 200
 

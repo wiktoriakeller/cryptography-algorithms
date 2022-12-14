@@ -95,8 +95,7 @@ message = "Hello! :)"
 print(f"Message: {message}")
 
 a, encrypted = encipher(message, p, g, y)
-encrypted_join = "".join([str(x) for x in encrypted])
-print(f"Cipher: {encrypted_join}")
+print(f"Cipher: {encrypted}")
 
 decrypted = decipher(encrypted, a, x, p)
 print(f"Decrypted message: {decrypted}")

@@ -2,16 +2,20 @@ from Crypto.PublicKey import RSA
 from Crypto.Util import number
 import random
 
-aMillion = 90
-bMillion = 150
+aMillion = 2
+bMillion = 3
 M = 200
 
-# generate private and public key
+print(f"A millions: {aMillion}")
+print(f"B millions: {bMillion}")
+
+# A generates private and public key
 bitsNum = 1024
 keyPair = RSA.generate(bits=bitsNum)
 publicKey = keyPair.public_key()
 print("A generated private and public keys, send public key to B")
 
+# side B
 # generate random x
 x = random.randint(0, 10000)
 print(f"B generated x: {x}")
@@ -23,6 +27,7 @@ print(f"B Enciphered C: {c}")
 m = c - bMillion + 1
 print(f"B calculated m: {m} and send it to A")
 
+# side A
 Z = []
 p = 2
 while True:
@@ -45,13 +50,14 @@ while True:
 print("A calculated Z")
 
 W = []
-for i in range(0, len(Z)):
+for i in range(len(Z)):
   num = Z[i]
   if (i + 1) >= aMillion:
     num += 1
   W.append(num)
 
 print("A calculated W and send it to B")
+
 if x % p == W[bMillion - 1]:
   print("A is richer")
 else:
